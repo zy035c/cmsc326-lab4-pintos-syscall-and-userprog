@@ -61,7 +61,7 @@ process_execute (const char *file_name)
       printf ("load: %s: open failed\n", file_name);
       return TID_ERROR;
     }
-  file_deny_write (file);
+  
   if (lock_held_by_current_thread(&file_lock)) lock_release(&file_lock);
   // free(file); // inefficient.  will later reopen file!!
 

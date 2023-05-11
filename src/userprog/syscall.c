@@ -21,7 +21,7 @@
 // sys call stuff
 void syscall_init (void);
 static void syscall_handler (struct intr_frame *);
-void get_args(void *sp, void **args,int n);
+void get_args (void *sp, void **args, int n);
 
 // Proc control
 void s_exit (int status);
@@ -378,7 +378,7 @@ void s_seek(int fd, unsigned position){
   lock_acquire (&file_lock);
   /* Gets a file with a matching file descriptor */
   struct file *f = get_file(fd);
-    if(f == NULL) {
+  if(f == NULL) {
     lock_release(&file_lock);
     return;
   }

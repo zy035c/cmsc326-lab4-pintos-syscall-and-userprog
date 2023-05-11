@@ -25,7 +25,7 @@ struct child_process {
   int status;
   bool wait;
   struct list_elem elem;
-  struct semaphore load_sema;
+  struct semaphore sys_wait_sema;
 };
 
 // Represent file within a process (kept in list) via fid
