@@ -209,12 +209,14 @@ void get_args(void *sp, void **args,int n) {
   int i;
   int *p;
 
+  //fix exec-bound:nadia
+  check_buffer_ptr(sp,(n+1)*4);
 
   if (n <= 0) return;
   // if (n > 3) s_exit(ERROR);
   for (i = 0; i < n; i++) {
     p = (int *) sp + (i + 1); // forces pointer offsets to 4 bytes!
-    check_invalid_ptr_error((const void *) p); // check stack ptr
+    //check_invalid_ptr_error((const void *) p); // check stack ptr(nadia turned off)
     // check_invalid_ptr_error((const void *) *p); // check dereferenced stack ptr
     args[i] = (void *) *p;//(sp + (i+1) * wlen);
     //printf("Args %d: %x\n",i,*(int*)args[i]);

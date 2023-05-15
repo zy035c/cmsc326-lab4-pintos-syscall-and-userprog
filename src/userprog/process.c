@@ -168,16 +168,16 @@ process_exit (void)
       pointers. */
   struct list_elem *next, *e = list_begin(&cur->file_list);
   while (e != list_end (&cur->file_list)) {
-      next = list_next(e);
-      struct file_in_proc *pf = list_entry (e, struct file_in_proc, elem);
-     
-      lock_acquire(&file_lock);    
-      file_close(pf->file);
-      lock_release(&file_lock);    
-      list_remove(&pf->elem);
-      free(pf);
-        
-      e = next;
+    next = list_next(e);
+    struct file_in_proc *pf = list_entry (e, struct file_in_proc, elem);
+  
+    lock_acquire(&file_lock);    
+    file_close(pf->file);
+    lock_release(&file_lock);    
+    list_remove(&pf->elem);
+    free(pf);
+      
+    e = next;
   }
 
 
